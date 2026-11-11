@@ -1,11 +1,31 @@
+#include <stdio.h>
 
 void copy(char *psource, char *ptarget, unsigned num_char)
 {
+    while (num_char > 0 && *psource != '\0')
+    {
+        *ptarget = *psource;  
+        psource++;             
+        ptarget++;           
+        num_char--;            
+    }
+    *ptarget = '\0'; 
     // TODO: write your code here
 }
 
 void concatenate(char *psrc1, char *psrc2, char *ptarget, unsigned buffer_size)
 {
+    char *buf_start = ptarget;
+    copy(psrc1, ptarget, buffer_size - 1);
+
+    while (*ptarget != '\0')
+    {
+        ptarget++;
+    }
+
+    unsigned written = ptarget - buf_start;
+    unsigned remaining = buffer_size - 1 - written;
+    copy(psrc2, ptarget, remaining);
     // TODO: write your code here
 }
 
